@@ -26,11 +26,11 @@ public class Cliente {
     @Column(name="CD_CLIENTE")
     private Integer codigo;
     
-    @Column(name = "NM_CLIENTE", length = 255, nullable = false)
+    @Column(name="NM_CLIENTE",length = 255,nullable = false)
     private String nome;
     
-    public Cliente(){
-        
+    public Cliente() {
+     
     }
 
     public Integer getCodigo() {
@@ -52,8 +52,7 @@ public class Cliente {
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 23 * hash + Objects.hashCode(this.codigo);
-        hash = 23 * hash + Objects.hashCode(this.nome);
+        hash = 53 * hash + Objects.hashCode(this.codigo);
         return hash;
     }
 
@@ -69,14 +68,10 @@ public class Cliente {
             return false;
         }
         final Cliente other = (Cliente) obj;
-        if (!Objects.equals(this.nome, other.nome)) {
-            return false;
-        }
         if (!Objects.equals(this.codigo, other.codigo)) {
             return false;
         }
         return true;
-    }
-    
+    }   
     
 }

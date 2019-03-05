@@ -17,9 +17,9 @@ import org.jdesktop.observablecollections.ObservableCollections;
  *
  * @author rafael
  */
-public class ClienteControl {
+public final class ClienteControl {
     
-    private PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
+    private final PropertyChangeSupport propertyChangeSupport = new PropertyChangeSupport(this);
     
     private Cliente clienteDigitado;
     
@@ -27,11 +27,11 @@ public class ClienteControl {
     
     private List<Cliente> clientesTabela;
     
-    private ClienteDao clienteDao;
+    private final ClienteDao clienteDao;
     
     public ClienteControl(){
         clienteDao = new ClienteDao();
-        clientesTabela = ObservableCollections.observableList(new ArrayList<Cliente>());
+        clientesTabela = ObservableCollections.observableList(new ArrayList<>());
         
         novo();
         pesquisar();
