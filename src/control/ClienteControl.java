@@ -11,7 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 import model.dao.ClienteDao;
 import model.domain.Cliente;
+import model.service.ServiceLocator;
 import org.jdesktop.observablecollections.ObservableCollections;
+import util.ValidacaoException;
 
 /**
  *
@@ -30,8 +32,8 @@ public final class ClienteControl {
     private final ClienteDao clienteDao;
     
     public ClienteControl(){
-        clienteDao = new ClienteDao();
-        clientesTabela = ObservableCollections.observableList(new ArrayList<>());
+        clienteDao = ServiceLocator.getClienteDao();
+        clientesTabela = ObservableCollections.observableList(new ArrayList<Cliente>());
         
         novo();
         pesquisar();
@@ -46,7 +48,8 @@ public final class ClienteControl {
         clientesTabela.addAll(clienteDao.pesquisar(clienteDigitado));
     }
     
-    public void salvar(){
+    public void salvar() throws ValidacaoException{
+        clienteDigitado.validar();
         clienteDao.salvarAtualizar(clienteDigitado);
         novo();
         pesquisar();
